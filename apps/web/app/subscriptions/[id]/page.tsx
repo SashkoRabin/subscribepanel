@@ -1,0 +1,13 @@
+import Link from "next/link";
+import { updateSubscription } from "../actions";
+import { requireSubscriptionContext } from "../../../lib/subscriptions";
+
+export default async function EditSubscriptionPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ error?: string }> }) {
+  const context = await requireSubscriptionContext();
+  if (!context) return <main className="landing"><h1>Please sign in.</h1><Link className="button" href="/auth">Sign in</Link></main>;
+  const { id } = await params; const { error } = await searchParams;
+  const subscription = await context.subscriptions.findById(context.user.id, id);
+  if (!subscription) return <main className="landing"><h1>Subscription not found.</h1><Link className="button" href="/subscriptions">Back to subscriptions</Link></main>;
+  const action = updateSubscription.bind(null, id);
+  return <main className="workspace"><Link className="text-link" href="/subscriptions">← All subscriptions</Link><section className="edit-wrap card"><p className="eyebrow">EDIT SUBSCRIPTION</p><h1>{subscription.name}</h1>{error ? <p role="alert" className="notice error">{error}</p> : null}<form action={action}><label>Name<input name="name" defaultValue={subscription.name} required maxLength={160} /></label><label>Merchant<input name="merchant" defaultValue={subscription.merchant} required maxLength={160} /></label><div className="field-row"><label>Amount<input name="amount" defaultValue={(subscription.amountMinor / 100).toFixed(2)} inputMode="decimal" required /></label><label>Currency<select name="currency" defaultValue={subscription.currency}><option>EUR</option><option>CZK</option></select></label></div><label>Billing interval<select name="billingInterval" defaultValue={subscription.billingInterval}>{["weekly", "monthly", "quarterly", "semi_annually", "annually", "custom"].map((item) => <option key={item} value={item}>{item.replace("_", " ")}</option>)}</select></label><label>Custom interval in days<input name="customIntervalDays" type="number" min="1" max="3660" defaultValue={subscription.customIntervalDays ?? ""} /></label><label>Next payment date<input name="nextBillingDate" type="date" defaultValue={subscription.nextBillingDate} required /></label><label>Trial ends<input name="trialEndDate" type="date" defaultValue={subscription.trialEndDate ?? ""} /></label><label>Status<select name="status" defaultValue={subscription.status}>{["active", "trial", "paused", "cancelled", "archived"].map((item) => <option key={item}>{item}</option>)}</select></label><button type="submit">Save changes</button></form></section></main>;
+}

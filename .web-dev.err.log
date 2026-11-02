@@ -1,0 +1,42 @@
+$ next dev
+⨯ Error: Supabase URL and publishable key must be configured.
+    at config (lib\supabase\server.ts:7:27)
+    at createServerSupabaseClient (lib\supabase\server.ts:13:24)
+    at async HomePage (app\page.tsx:5:20)
+   5 |   const url = process.env.SUPABASE_URL;
+   6 |   const key = process.env.SUPABASE_PUBLISHABLE_KEY;
+>  7 |   if (!url || !key) throw new Error("Supabase URL and publishable key must be configured.");
+     |                           ^
+   8 |   return { url, key };
+   9 | }
+  10 | {
+  digest: '3193421016'
+}
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+⨯ Error: Supabase URL and publishable key must be configured.
+    at config (lib\supabase\server.ts:7:27)
+    at createServerSupabaseClient (lib\supabase\server.ts:13:24)
+    at async HomePage (app\page.tsx:5:20)
+   5 |   const url = process.env.SUPABASE_URL;
+   6 |   const key = process.env.SUPABASE_PUBLISHABLE_KEY;
+>  7 |   if (!url || !key) throw new Error("Supabase URL and publishable key must be configured.");
+     |                           ^
+   8 |   return { url, key };
+   9 | }
+  10 | {
+  digest: '3193421016'
+}
+⨯ Error: Supabase URL and publishable key must be configured.
+    at config (lib\supabase\server.ts:7:27)
+    at createServerSupabaseClient (lib\supabase\server.ts:13:24)
+    at async HomePage (app\page.tsx:5:20)
+   5 |   const url = process.env.SUPABASE_URL;
+   6 |   const key = process.env.SUPABASE_PUBLISHABLE_KEY;
+>  7 |   if (!url || !key) throw new Error("Supabase URL and publishable key must be configured.");
+     |                           ^
+   8 |   return { url, key };
+   9 | }
+  10 | {
+  digest: '3193421016'
+}
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...

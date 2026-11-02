@@ -1,0 +1,5 @@
+"use client";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+const labels = { EN: ["Overview", "Subscriptions", "Analytics", "Connections"], RU: ["Обзор", "Подписки", "Аналитика", "Подключения"] } as const;
+export function NavLinks({ active }: { active: string }) { const [language, setLanguage] = useState<"EN" | "RU">("EN"); useEffect(() => { const update = () => setLanguage((localStorage.getItem("subscript-language") as "EN" | "RU" | null) ?? "EN"); update(); window.addEventListener("subscript-language", update); return () => window.removeEventListener("subscript-language", update); }, []); const items = [{ href: "/", id: "dashboard" }, { href: "/subscriptions", id: "subscriptions" }, { href: "/analytics", id: "analytics" }, { href: "/integrations", id: "integrations" }]; return <div className="nav-links">{items.map((item, index) => <Link key={item.id} className={active === item.id ? "nav-link active" : "nav-link"} href={item.href}>{labels[language][index]}</Link>)}</div>; }

@@ -1,0 +1,2 @@
+$ next dev "--" "--port" "3001"
+Invalid project directory provided, no such directory: C:\Users\admin\Desktop\subscribepanel\apps\web\--port

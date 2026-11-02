@@ -1,8 +1,11 @@
-import type { z } from "zod";
-import { billingIntervalSchema } from "@subscript/contracts";
 import { isCalendarDate } from "@subscript/utils";
 
-export type BillingInterval = z.infer<typeof billingIntervalSchema>;
+export type BillingInterval = "weekly" | "monthly" | "quarterly" | "semi_annually" | "annually" | "custom";
+
+export function monthlyEquivalentMinor(amountMinor: number, interval: BillingInterval, customIntervalDays?: number | null) {
+  const factor = interval === "weekly" ? 52 / 12 : interval === "monthly" ? 1 : interval === "quarterly" ? 1 / 3 : interval === "semi_annually" ? 1 / 6 : interval === "annually" ? 1 / 12 : customIntervalDays ? 30.4375 / customIntervalDays : 0;
+  return Math.round(amountMinor * factor);
+}
 
 function daysInMonth(year: number, month: number): number { return new Date(Date.UTC(year, month, 0)).getUTCDate(); }
 

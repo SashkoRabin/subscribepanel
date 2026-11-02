@@ -1,0 +1,2 @@
+DROP INDEX "subscript"."integrations_user_provider_unique";--> statement-breakpoint
+CREATE UNIQUE INDEX "integrations_user_provider_item_unique" ON "subscript"."integrations" USING btree ("user_id","provider","provider_item_id");

@@ -4,7 +4,9 @@
   "packageManager": "pnpm@11.1.3",
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "pnpm --filter @subscript/web dev",
+    "dev:all": "turbo run dev",
+    "start": "pnpm --filter @subscript/web start",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",

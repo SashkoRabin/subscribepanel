@@ -13,3 +13,9 @@ export function isCalendarDate(value: string): boolean {
   return date.getUTCFullYear() === year && date.getUTCMonth() === month! - 1 && date.getUTCDate() === day;
 }
 
+export function formatCalendarDate(value: string, locale = "ru-RU"): string {
+  if (!isCalendarDate(value)) return value;
+  const [year, month, day] = value.split("-");
+  return locale === "ru-RU" ? `${day}.${month}.${year}` : `${day}.${month}.${year}`;
+}
+

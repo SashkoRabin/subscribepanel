@@ -22,3 +22,25 @@ export const createSubscriptionSchema = z.object({
 
 export type CreateSubscriptionInput = z.infer<typeof createSubscriptionSchema>;
 
+export const updateSubscriptionSchema = createSubscriptionSchema.extend({
+  status: subscriptionStatusSchema.optional()
+});
+
+export type UpdateSubscriptionInput = z.infer<typeof updateSubscriptionSchema>;
+
+export const subscriptionDtoSchema = z.object({
+  id: z.uuid(),
+  name: z.string(),
+  merchant: z.string(),
+  amountMinor: z.int().positive(),
+  currency: currencySchema,
+  billingInterval: billingIntervalSchema,
+  customIntervalDays: z.int().positive().nullable(),
+  nextBillingDate: calendarDateSchema,
+  trialEndDate: calendarDateSchema.nullable(),
+  status: subscriptionStatusSchema,
+  source: z.enum(["manual", "email", "bank", "import"])
+});
+
+export type SubscriptionDto = z.infer<typeof subscriptionDtoSchema>;
+

@@ -1,0 +1,5 @@
+"use client";
+import { useState } from "react";
+const domains: Array<[RegExp, string]> = [[/pid\s*l[ií]ta[čc]ka/i, "pidlitacka.cz"], [/netflix/i, "netflix.com"], [/spotify/i, "spotify.com"], [/apple/i, "apple.com"], [/youtube/i, "youtube.com"], [/google/i, "google.com"], [/disney/i, "disneyplus.com"], [/notion/i, "notion.so"], [/figma/i, "figma.com"], [/microsoft|office|xbox/i, "microsoft.com"], [/adobe/i, "adobe.com"], [/canva/i, "canva.com"], [/dropbox/i, "dropbox.com"], [/revolut/i, "revolut.com"]];
+function initials(value: string) { return value.trim().split(/\s+/).slice(0, 2).map((word) => word[0]).join("").toUpperCase() || "S"; }
+export function ServiceIcon({ name, size = "regular" }: { name: string; size?: "regular" | "large" }) { const [failed, setFailed] = useState(false); const domain = domains.find(([pattern]) => pattern.test(name))?.[1]; return <span className={`service-icon ${size}`}>{domain && !failed ? <img src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`} alt="" onError={() => setFailed(true)} /> : <span>{initials(name)}</span>}</span>; }

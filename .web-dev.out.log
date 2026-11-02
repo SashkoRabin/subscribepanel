@@ -1,0 +1,30 @@
+▲ Next.js 16.4.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://26.53.51.1:3000
+✓ Ready in 3.4s
+✓ Running next.config took 112ms
+
+✓ Generated AGENTS.md for AI agents. Set `agentRules: false` in next.config to disable.
+○ Compiling / ...
+ GET / 500 in 6.7s (next.js: 5.7s, proxy.ts: 173ms, application-code: 804ms)
+▲ Next.js 16.4.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://26.53.51.1:3000
+✓ Ready in 791ms
+✓ Running next.config.ts took 59ms
+
+ GET / 500 in 1534ms (next.js: 845ms, proxy.ts: 209ms, application-code: 480ms)
+ GET / 500 in 152ms (next.js: 44ms, proxy.ts: 11ms, application-code: 97ms)
+✓ Compiled in 75ms
+  Turbopack has seen frequent file updates and is waiting for the filesystem to settle (0.5s elapsed so far; last modified: "\\\\?\\C:\\Users\\admin\\Desktop\\subscribepanel\\node_modules\\.bin\\tsserver.ps1").
+▲ Next.js 16.4.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://26.53.51.1:3000
+✓ Ready in 1283ms
+✓ Running next.config.ts took 95ms
+
+  Turbopack has seen frequent file updates and is waiting for the filesystem to settle (0.5s elapsed so far; last modified: "\\\\?\\C:\\Users\\admin\\Desktop\\subscribepanel\\node_modules\\.pnpm-workspace-state-v1.json").
+[?25h
+C:\Users\admin\Desktop\subscribepanel\apps\web:
+[ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL] @subscript/web@0.0.0 dev: `next dev`
+Exit status 4294967295

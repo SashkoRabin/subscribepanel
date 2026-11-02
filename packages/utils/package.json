@@ -1,0 +1,10 @@
+{
+  "name": "@subscript/utils",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc --noEmit", "lint": "tsc --noEmit", "test": "vitest run" },
+  "devDependencies": { "vitest": "4.0.18" }
+}
+

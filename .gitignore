@@ -1,0 +1,11 @@
+node_modules
+.turbo
+.next
+dist
+coverage
+.env
+.env.local
+apps/*/.expo
+apps/*/web-build
+.pnpm-install.*.log
+

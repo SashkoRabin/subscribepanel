@@ -7,5 +7,6 @@ coverage
 .env.local
 apps/*/.expo
 apps/*/web-build
+apps/*/dist-*
 .pnpm-install.*.log
 

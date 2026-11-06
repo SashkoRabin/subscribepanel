@@ -1,7 +1,17 @@
 import { z } from "zod";
 
 export const currencySchema = z.string().regex(/^[A-Z]{3}$/, "Use an ISO 4217 currency code.");
-export const calendarDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD.");
+function isCalendarDate(value: string) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(Date.UTC(year!, month! - 1, day!));
+  return date.getUTCFullYear() === year && date.getUTCMonth() === month! - 1 && date.getUTCDate() === day;
+}
+
+export const calendarDateSchema = z.string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD.")
+  .refine(isCalendarDate, "Use a real calendar date.");
+export const subscriptionIdSchema = z.uuid("Invalid subscription ID.");
 export const billingIntervalSchema = z.enum(["weekly", "monthly", "quarterly", "semi_annually", "annually", "custom"]);
 export const subscriptionStatusSchema = z.enum(["active", "trial", "paused", "cancelled", "archived"]);
 

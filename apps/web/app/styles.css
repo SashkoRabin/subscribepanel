@@ -84,3 +84,19 @@
   .system-actions { display:grid; }
   .system-actions .button,.system-actions button { width:100%; }
 }
+
+/* Subscription controls are grouped by intent, avoiding an ambiguous wall of buttons. */
+.subscription-actions { align-items:center; display:flex; flex-wrap:wrap; gap:.45rem; grid-area:actions; justify-content:flex-end; padding-top:.3rem; }
+.subscription-actions form { display:block; }
+.subscription-action-primary { min-width:8.5rem; }
+.subscription-secondary-actions { display:flex; flex-wrap:wrap; gap:.45rem; }
+.subscription-actions button,.subscription-actions .button { min-height:2.5rem; padding:.5rem .78rem; }
+.subscription-actions button:disabled { cursor:progress; opacity:.72; }
+
+@media (max-width: 760px) {
+  .subscription-actions { display:grid; gap:.55rem; grid-template-columns:repeat(2,minmax(0,1fr)); justify-content:stretch; padding-top:.5rem; width:100%; }
+  .subscription-action-primary,.subscription-secondary-actions,.subscription-delete-action { grid-column:1 / -1; width:100%; }
+  .subscription-secondary-actions { display:grid; gap:.55rem; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .subscription-actions form,.subscription-actions button,.subscription-actions .button { min-width:0; width:100%; }
+  .subscription-actions button,.subscription-actions .button { min-height:2.85rem; }
+}
